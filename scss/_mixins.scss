@@ -1,0 +1,23 @@
+// Responsive helpers
+@mixin breakpoint($point) {
+  @if $point == wide {
+    @media (min-width: $breakpoint-large) { @content; }
+  }
+  @else if $point == landscape {
+    @media (min-width: $breakpoint-medium) { @content; }
+  }
+  @else if $point == portrait {
+    @media (min-width: $breakpoint-small)  { @content; }
+  }
+}
+
+// Font size in ems or rems
+@mixin fs($px, $context: 16, $unit: em) {
+  font-size: ($px/$context)+$unit;
+}
+
+// Font size in rems, fallback to px
+@mixin fspxrem($px) {
+  font-size: $px+px;
+  font-size: ($px/10)+rem;
+}
